@@ -46,8 +46,6 @@ public class IdCardSearchController {
         })
 	public String idCardSearchAdd(Model model,IdCardSearchEntity entity,HttpServletRequest request) {
 		entity.setDeviceIp(MyTools.getIp(request));
-		SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-		entity.setDate(fmt.format(new Date()));
 		idCardSearchService.add(entity);
         return "success";
     }

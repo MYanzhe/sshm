@@ -40,19 +40,26 @@ public class IdCardSearchEntity {
 	
 	@Column(name="device_ip")
 	private String deviceIp;
-
-	@Column(name="date")
-	private String Date;
+	
+	@Column(name="uuid")
+	private String uuid;
+	
+	@Column(name="macAddress")
+	private String macAddress;
+	
+	@Column(name="phoneDetile")
+	private String phoneDetile;
 	
 	@Column(name="create_date", nullable=true, updatable=false)
-    @Generated(GenerationTime.INSERT)
-	@Temporal(TemporalType.TIMESTAMP) 
-    private Date createDate;   
-       
-    @Column(name="last_updated", nullable=true)
-    @Generated(GenerationTime.ALWAYS)
-    @Temporal(TemporalType.TIMESTAMP) 
-    private Date lastUpdated;
+	@Temporal(TemporalType.TIMESTAMP)
+	@org.hibernate.annotations.CreationTimestamp
+  private Date createDate;   
+     
+	
+  @Column(name="last_updated", nullable=true)
+  @Temporal(TemporalType.TIMESTAMP)
+  @org.hibernate.annotations.UpdateTimestamp
+  private Date lastUpdated;
 	
 	public Long getId() {
 		return id;
@@ -110,14 +117,6 @@ public class IdCardSearchEntity {
 		this.deviceIp = deviceIp;
 	}
 
-	public String getDate() {
-		return Date;
-	}
-
-	public void setDate(String date) {
-		Date = date;
-	}
-
 	public Date getCreateDate() {
 		return createDate;
 	}
@@ -133,7 +132,29 @@ public class IdCardSearchEntity {
 	public void setLastUpdated(Date lastUpdated) {
 		this.lastUpdated = lastUpdated;
 	}
-	
-	
+
+	public String getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
+
+	public String getMacAddress() {
+		return macAddress;
+	}
+
+	public void setMacAddress(String macAddress) {
+		this.macAddress = macAddress;
+	}
+
+	public String getPhoneDetile() {
+		return phoneDetile;
+	}
+
+	public void setPhoneDetile(String phoneDetile) {
+		this.phoneDetile = phoneDetile;
+	}
 	
 }
