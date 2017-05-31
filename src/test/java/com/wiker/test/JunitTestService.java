@@ -4,8 +4,8 @@ import java.util.List;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.wiker.entity.TestEntity;
-import com.wiker.service.TestService;
+import com.q.app.entity.TestEntity;
+import com.q.app.service.TestService;
 
 /**
  * Created by wiker on 2016-06-22.
