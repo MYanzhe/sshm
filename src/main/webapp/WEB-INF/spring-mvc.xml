@@ -68,10 +68,10 @@
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<!-- JSP 映射路径，有些为了安全也可以配置成/WEB-INF/，这样jsp是无法直接访问的 -->
-		<property name="prefix" value="/" />
+		<property name="prefix" value="WEB-INF/web/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
 
 	<!-- 定义无Controller的path<->view直接映射，可以当作欢迎页使用，这里就直接映射到test了 -->
-	<mvc:view-controller path="/" view-name="redirect:/test" />
+	<mvc:view-controller path="/" view-name="redirect:/manager" />
 </beans>

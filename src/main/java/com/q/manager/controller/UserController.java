@@ -37,6 +37,11 @@ public class UserController {
 	@RequestMapping(value = "login", method = { RequestMethod.GET, RequestMethod.POST })
 	public String testGetAll(Model model, User entity) {
 		service.add(entity);
+		return "redirect:/main";
+	}
+	
+	@RequestMapping(value = "main", method = { RequestMethod.GET, RequestMethod.POST })
+	public String main(Model model, String name) {
 		return "main";
 	}
 
