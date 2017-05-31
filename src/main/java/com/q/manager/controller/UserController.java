@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.q.app.entity.TestEntity;
 import com.q.manager.entity.User;
 import com.q.manager.service.UserService;
 
@@ -36,10 +35,15 @@ public class UserController {
 	// 真实情况应该是根据业务需求来是重定向还是直接刷新页面等
 	@RequestMapping(value = "login", method = { RequestMethod.GET, RequestMethod.POST })
 	public String testGetAll(Model model, User entity) {
-		service.add(entity);
-		return "redirect:/main";
+				
+		User user = service.login(entity);
+		if (user != null) {
+			return "redirect:/main";
+		}
+		model.addAttribute("name", "loginError");
+		return "index";
 	}
-	
+
 	@RequestMapping(value = "main", method = { RequestMethod.GET, RequestMethod.POST })
 	public String main(Model model, String name) {
 		return "main";

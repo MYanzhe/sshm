@@ -20,14 +20,11 @@ public class User {
     private Long id;
 	
 	@Column(name="create_date", nullable=true, updatable=false)
-//    @Generated(GenerationTime.INSERT)
 	@Temporal(TemporalType.TIMESTAMP)
 	@org.hibernate.annotations.CreationTimestamp
-    private Date createDate;   
-       
+    private Date createDate;
 	
     @Column(name="last_updated", nullable=true)
-//    @Generated(GenerationTime.ALWAYS)
     @Temporal(TemporalType.TIMESTAMP)
     @org.hibernate.annotations.UpdateTimestamp
     private Date lastUpdated;

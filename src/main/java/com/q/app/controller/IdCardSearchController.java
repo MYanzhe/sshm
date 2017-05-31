@@ -1,7 +1,5 @@
 package com.q.app.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,31 +20,27 @@ import tools.MyTools;
 //如果配置成@Controller("path"),那么访问的地址应该是：http://localhost:8080/path/test
 @Controller
 public class IdCardSearchController {
-	
-	//和Service结合，实现数据库操作。这里是注入的Service，其实直接注入Dao也是可以的
-	//TIPS：Service使用了事务，所以不要直接try catch，不然事务会失效
+
+	// 和Service结合，实现数据库操作。这里是注入的Service，其实直接注入Dao也是可以的
+	// TIPS：Service使用了事务，所以不要直接try catch，不然事务会失效
 	@Autowired
 	private IdCardSearchService idCardSearchService;
-	
-	//获取列表
+
+	// 获取列表
 	@ResponseBody
-	@RequestMapping(value = "app/idCardSearch/getList", method = {
-            RequestMethod.GET, RequestMethod.POST
-        })
-	public List<IdCardSearchEntity> idCardSearchGetList(Model model,String name) {
+	@RequestMapping(value = "app/idCardSearch/getList", method = { RequestMethod.GET, RequestMethod.POST })
+	public List<IdCardSearchEntity> idCardSearchGetList(Model model, String name) {
 		List<IdCardSearchEntity> list = idCardSearchService.getAll();
-        return list;
-    }
-	
-	//添加操作，添加后返回列表页面，这里为了简单演示就直接通过redirect的方式
-	//真实情况应该是根据业务需求来是重定向还是直接刷新页面等
+		return list;
+	}
+
+	// 添加操作，添加后返回列表页面，这里为了简单演示就直接通过redirect的方式
+	// 真实情况应该是根据业务需求来是重定向还是直接刷新页面等
 	@ResponseBody
-	@RequestMapping(value = "app/idCardSearch/add", method = {
-            RequestMethod.GET, RequestMethod.POST
-        })
-	public String idCardSearchAdd(Model model,IdCardSearchEntity entity,HttpServletRequest request) {
+	@RequestMapping(value = "app/idCardSearch/add", method = { RequestMethod.GET, RequestMethod.POST })
+	public String idCardSearchAdd(Model model, IdCardSearchEntity entity, HttpServletRequest request) {
 		entity.setDeviceIp(MyTools.getIp(request));
 		idCardSearchService.add(entity);
-        return "success";
-    }
+		return "success";
+	}
 }
