@@ -3,7 +3,10 @@
 <html>
 <body>
 <h2>Hello Please Login</h2>
-<input name='username'>
-<input name='password'>
+<form action="${ctx}/login">
+	<input name='username'>
+	<input name='password'>
+	<input type='submit'>
+</form>
 </body>
 </html>

@@ -37,7 +37,10 @@ public class User {
 
 	@Column(name="password")
 	private String password;
-
+	
+	@Column(name="username")
+	private String username;
+	
 	public String getPhone() {
 		return phone;
 	}
@@ -77,5 +80,15 @@ public class User {
 	public void setLastUpdated(Date lastUpdated) {
 		this.lastUpdated = lastUpdated;
 	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
+	
 	
 }
