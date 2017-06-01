@@ -35,7 +35,6 @@ public class UserController {
 	// 真实情况应该是根据业务需求来是重定向还是直接刷新页面等
 	@RequestMapping(value = "login", method = { RequestMethod.GET, RequestMethod.POST })
 	public String testGetAll(Model model, User entity) {
-				
 		User user = service.login(entity);
 		if (user != null) {
 			return "redirect:/main";

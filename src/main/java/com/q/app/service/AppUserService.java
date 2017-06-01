@@ -29,4 +29,12 @@ public class AppUserService {
 	public List<AppUserEntity> getAll(){
 		return (List<AppUserEntity>) dao.findAll();
 	}
+
+	public AppUserEntity login(AppUserEntity entity) {
+		return dao.login(entity.getPhone(),entity.getPassword());
+	}
+
+	public boolean checkPhoneUsable(AppUserEntity entity) {
+		return (dao.checkPhoneUsable(entity.getPhone()) < 1);
+	}
 }
