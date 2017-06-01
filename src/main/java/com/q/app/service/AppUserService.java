@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.q.app.dao.AppUserDao;
 import com.q.app.entity.AppUserEntity;
 
+import tools.MD5Tools;
+
 @Service
 @Transactional(readOnly = true)
 public class AppUserService {
@@ -18,6 +20,7 @@ public class AppUserService {
 	
 	@Transactional(readOnly=false)
 	public AppUserEntity add(AppUserEntity t){
+		t.setPassword(MD5Tools.getPwd(t.getPassword()));
 		return dao.save(t);
 	}
 	
@@ -31,7 +34,7 @@ public class AppUserService {
 	}
 
 	public AppUserEntity login(AppUserEntity entity) {
-		return dao.login(entity.getPhone(),entity.getPassword());
+		return dao.login(entity.getPhone(),MD5Tools.getPwd(entity.getPassword()));
 	}
 
 	public boolean checkPhoneUsable(AppUserEntity entity) {

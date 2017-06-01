@@ -3,6 +3,7 @@ package com.q.manager.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,9 +35,10 @@ public class UserController {
 	// 添加操作，添加后返回列表页面，这里为了简单演示就直接通过redirect的方式
 	// 真实情况应该是根据业务需求来是重定向还是直接刷新页面等
 	@RequestMapping(value = "login", method = { RequestMethod.GET, RequestMethod.POST })
-	public String testGetAll(Model model, User entity) {
+	public String testGetAll(Model model, User entity,HttpSession httpSession) {
 		User user = service.login(entity);
 		if (user != null) {
+			httpSession.setAttribute("user", user);
 			return "redirect:/main";
 		}
 		model.addAttribute("name", "loginError");
@@ -44,7 +46,10 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "main", method = { RequestMethod.GET, RequestMethod.POST })
-	public String main(Model model, String name) {
+	public String main(Model model, String name,HttpSession httpSession) {
+		if(httpSession.getAttribute("user") == null){
+			return "index";
+		}
 		return "main";
 	}
 
@@ -59,7 +64,7 @@ public class UserController {
 	// 添加操作，添加后返回列表页面，这里为了简单演示就直接通过redirect的方式
 	// 真实情况应该是根据业务需求来是重定向还是直接刷新页面等
 	@ResponseBody
-	@RequestMapping(value = "manager/user/add", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "manager/user/add", method = { RequestMethod.POST })
 	public String userAdd(Model model, User entity, HttpServletRequest request) {
 		service.add(entity);
 		return "success";

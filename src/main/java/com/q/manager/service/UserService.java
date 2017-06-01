@@ -20,6 +20,7 @@ public class UserService {
 	
 	@Transactional(readOnly=false)
 	public User add(User t){
+		t.setPassword(MD5Tools.getPwd(t.getPassword()));
 		return dao.save(t);
 	}
 	

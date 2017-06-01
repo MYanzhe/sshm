@@ -4,7 +4,7 @@
 <html>
 <body>
 <h2>测试数据库操作</h2>
-<form action="${ctx }/testAdd" method="post">
+<form action="${ctx}/testAdd" method="post">
 <input type="text" name="content">
 <input type="submit" value="提交"></input>
 </form>

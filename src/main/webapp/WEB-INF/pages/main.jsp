@@ -7,10 +7,10 @@
 <meta charset="UTF-8">
 <title>Title</title>
 <meta http-equiv="Access-Control-Allow-Origin" content="*">
-<link rel="stylesheet" href="css/uikit.gradient.min.css" />
-<link rel="stylesheet" href="css/main.css" />
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="js/uikit.min.js"></script>
+<link rel="stylesheet" href="../../assets/css/uikit.gradient.min.css" />
+<link rel="stylesheet" href="../../assets/css/main.css" />
+<script src="../../assets/js/jquery-3.2.1.min.js"></script>
+<script src="../../assets/js/uikit.min.js"></script>
 <script language="javascript">
 	//扩展Date的format方法
 	Date.prototype.format = function(format) {
