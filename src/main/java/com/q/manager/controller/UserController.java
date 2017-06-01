@@ -34,7 +34,7 @@ public class UserController {
 
 	// 添加操作，添加后返回列表页面，这里为了简单演示就直接通过redirect的方式
 	// 真实情况应该是根据业务需求来是重定向还是直接刷新页面等
-	@RequestMapping(value = "login", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "manager/login", method = { RequestMethod.GET, RequestMethod.POST })
 	public String testGetAll(Model model, User entity,HttpSession httpSession) {
 		User user = service.login(entity);
 		if (user != null) {

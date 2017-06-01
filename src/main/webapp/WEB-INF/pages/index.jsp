@@ -10,7 +10,7 @@
 </head>
 <body>
 	<h2>Hello Please Login</h2>
-	<form action="${ctx}/login" method="post">
+	<form action="${ctx}/manager/login" method="post">
 		<input name='username'> <input name='password'> <input
 			type='submit'>
 	</form>
